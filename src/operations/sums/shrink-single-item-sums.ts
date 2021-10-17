@@ -11,7 +11,7 @@ export const shrinkSingleItemSum: Spell = {
   },
   cast: (target) => {
     return {
-      beforeMarksss: [[0]],
+      beforeMarks: [[0]],
       polymorph: target.stomach?.[0]!,
     }
   },

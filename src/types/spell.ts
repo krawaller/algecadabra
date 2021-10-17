@@ -52,4 +52,4 @@ type Cauldron<B extends Blueprint> = {
 
 type Path = number[]
 
-export type SpellName = 'killZeroInSum' | 'shrinkSingleItemSum'
+export type SpellName = 'killZeroInSum' | 'shrinkSingleItemSum' | 'flattenSum'

@@ -15,4 +15,11 @@ export const englishSpells: Language['spells'] = {
       'If a {SUM} has only eaten 1 thing that thing will burst out!',
     ],
   },
+  flattenSum: {
+    name: ['Flatten sum', 'Digest eaten {SUM}'],
+    description: [
+      'A sum inside of a sum can be flattened',
+      'A {SUM} eaten by a {SUM} will dissolve!',
+    ],
+  },
 }
