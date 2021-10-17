@@ -1,7 +1,14 @@
 import { Entity, EntityKind } from '../types'
-import { ErrorMessage, SpellName } from './content'
+import { ErrorMessage } from './content'
 
-export type Spell<B extends Blueprint> = {
+// Special recipe to use in spells that don't have any input
+// (TS otherwise didn't act well for "empty" recipes)
+export const OK = { _: '_' } as const
+type OK = typeof OK
+type EMPTYKEY = keyof OK
+type EMPTYVAL = OK[EMPTYKEY]
+
+export type Spell<B extends Blueprint = OK> = {
   id: SpellName
   category: EntityKind | 'all'
   taster: (e: Entity) => Recipe<B> | ErrorMessage
@@ -19,8 +26,12 @@ type Blueprint = Record<string, IngredientType>
 type Recipe<B extends Blueprint> = {
   [key in keyof B]: RecipeLine<B[key]>
 }
-type RecipeLine<RecipeKind> = RecipeKind extends 'stomach' ? StomachLine : never
-type IngredientType = 'stomach'
+type RecipeLine<RecipeKind> = RecipeKind extends 'stomach'
+  ? StomachLine
+  : RecipeKind extends EMPTYVAL
+  ? EMPTYVAL
+  : never
+type IngredientType = 'stomach' | EMPTYVAL
 
 type StomachLine = {
   type: 'stomach'
@@ -29,10 +40,16 @@ type StomachLine = {
   max?: number
 }
 
-type Ingredient<RecipeKind> = RecipeKind extends 'stomach' ? number[] : never
+type Ingredient<RecipeKind> = RecipeKind extends 'stomach'
+  ? number[]
+  : RecipeKind extends EMPTYVAL
+  ? EMPTYVAL
+  : never
 
 type Cauldron<B extends Blueprint> = {
-  [key in keyof B]: Ingredient<B[key]>
+  [key in Exclude<keyof B, EMPTYKEY>]: Ingredient<B[key]>
 }
 
 type Path = number[]
+
+export type SpellName = 'killZeroInSum' | 'shrinkSingleItemSum'

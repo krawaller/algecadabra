@@ -8,4 +8,11 @@ export const englishSpells: Language['spells'] = {
       'A {SUM} cannot digest a {ZERO} so we can always remove a {ZERO} from the stomach of a {SUM}',
     ],
   },
+  shrinkSingleItemSum: {
+    name: ['Shrink single item sum', 'Collapse hungry {SUM}'],
+    description: [
+      'A sum with a single item can be shrunk',
+      'If a {SUM} has only eaten 1 thing that thing will burst out!',
+    ],
+  },
 }

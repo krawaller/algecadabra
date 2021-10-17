@@ -1,6 +1,6 @@
 import { EntityKind } from '../entity'
+import { SpellName } from '../spell'
 import { ErrorMessage } from './messages.errors'
-import { SpellName } from './spell-names'
 
 export type Entry = [
   string, // math text

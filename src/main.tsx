@@ -4,7 +4,7 @@ import { Monster } from './Monster'
 import { Entity } from './types'
 
 const entity: Entity = {
-  kind: 'product',
+  kind: 'sum',
   stomach: [
     { kind: 'number', value: 5 },
     {

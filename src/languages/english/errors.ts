@@ -6,4 +6,8 @@ export const englishErrors: Language['errors'] = {
     'Sum must have at least one zero',
     'Target {SUM} must have devoured at least one {ZERO}',
   ],
+  err_summusthave1item: [
+    'Sum must have 1 item',
+    '{SUM} must have exactly 1 item in the stomach',
+  ],
 }
